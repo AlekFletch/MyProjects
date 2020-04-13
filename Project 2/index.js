@@ -1,7 +1,8 @@
 var money;
 var time;
 
-money = confirm("Ваш бюджет на месяц?");
+money = prompt("Ваш бюджет на месяц?", "Ваш бюджет");
 
-time = confirm("Введите дату в формате YYYY-MM-DD?");
+time = prompt("Введите дату в формате YYYY-MM-DD?", "YYYY-MM-DD");
 
+money;
