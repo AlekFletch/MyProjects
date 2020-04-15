@@ -46,4 +46,5 @@ if (yearAfter != yearNow) {
 budgetMonth = money/difMonth;
 alert("Ежемесячный бюджет на " + difMonth + " месяцев  = " + Math.round(budgetMonth));
 
-let x = 5; alert( x++ );
+let x = 5; console.log( x++ );
+console.log([ ] + false - null + true)
