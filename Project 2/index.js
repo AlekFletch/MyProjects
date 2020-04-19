@@ -1,6 +1,6 @@
 let money, time;
 
-function start() {
+/*function start() {
     money = +prompt("Ваш бюджет на месяц?", '');
     time = prompt("Введите дату в формате YYYY-MM-DD", '');
 
@@ -10,17 +10,31 @@ function start() {
 }
 
 start();
-
+*/
 
 
 let appData = {
     budget: money,
     expenses: {},
     optionalExpences: {},
+    exoptionalExpences: {},
     income: [],
     timeData: time,
     savings: true
 };
+alert("Игра началась!");
+//Создаем функцию для определения необязательных расходов
+function chooseOptExpenses() {
+    for (let index = 1; index < 4; index++) {
+        let a = prompt("Введите статью необязательных расходов в этом месяце", '');
+
+        if ((typeof (a)) === 'string' && (typeof (a)) != null && a != '' && a.length < 50) {
+            appData.exoptionalExpences[index] = a;
+            
+        }
+    }
+}
+chooseOptExpenses();
 
 //appData.expenses.a1 = a2;
 //appData.expenses.a3 = a4;
@@ -79,26 +93,3 @@ function detectLevel() {
 
 detectLevel();
 
-function checkSavings() {
-    if (appData.savings == true) {
-        let save = +prompt("Какова сумма накоплений?"),
-            percent = +prompt("Укажите процент?");
-        appData.monthIncome = save / 100 / 12 * percent;
-        alert("Ежемесячный доход с  ваших накоплений: " + appData.monthIncome)
-    }
-}
-checkSavings();
-//Создаем функцию для определения необязательных расходов
-function chooseOptExpenses() {
-    for (let index = 0; index < 3; index++) {
-        let a = prompt("Введите статью необязательных расходов в этом месяце", ''),
-        b = prompt("Во сколько обойдется?", '');
-    if ((typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
-        appData.exoptionalExpences[a] = b;
-        index++;
-    } else {
-        index = index - 1;
-    } 
-        
-    }
-}
