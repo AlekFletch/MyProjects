@@ -30,7 +30,7 @@ function chooseOptExpenses() {
 
         if ((typeof (a)) === 'string' && (typeof (a)) != null && a != '' && a.length < 50) {
             appData.exoptionalExpences[index] = a;
-            
+
         }
     }
 }
@@ -93,3 +93,12 @@ function detectLevel() {
 
 detectLevel();
 
+function checkSavings() {
+    if (appData.savings == true) {
+        let save = +prompt("Какова сумма накоплений?"),
+            percent = +prompt("Укажите процент?");
+        appData.monthIncome = save / 100 / 12 * percent;
+        alert("Ежемесячный доход с  ваших накоплений: " + appData.monthIncome)
+    }
+}
+checkSavings();
