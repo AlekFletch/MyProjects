@@ -102,3 +102,9 @@ function checkSavings() {
     }
 }
 checkSavings();
+
+function learnJS(callback){
+    console.log("Вывод функции обучения JS");
+    callback();
+}
+learnJS(function (){console.log("Прошел 3-й урок")});

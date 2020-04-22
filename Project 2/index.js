@@ -1,3 +1,17 @@
+let money, time;
+
+function start() {
+    money = +prompt("Ваш бюджет на месяц?", '');
+    //time = prompt("Введите дату в формате YYYY-MM-DD", '');
+
+    while (isNaN(money) || money == "" || money == null) {
+        money = +prompt("Ваш бюджет на месяц?", '');
+    }
+}
+
+start();
+
+
 let appData = {
     budget: money,
     expenses: {},
@@ -53,8 +67,17 @@ let appData = {
             }
         }
     },
-    chooseIncome: function(){
+    chooseIncome: function () {
         let items = prompt("Что принесет дополнительный доход? Перечислите через запятую.", '');
-        appData.income = items.split(', ');
+        while (!((typeof (items)) === 'string' && (typeof (items)) != null && items != '')) {
+            items = prompt("Что принесет дополнительный доход? Перечислите через запятую.", '');
+        }
+      
+            appData.income = items.split(', ');
+        
+
+        appData.income.forEach(function (item, index, array) {
+            console.log(item, index + 1);
+        });
     }
-};
+}
