@@ -22,16 +22,6 @@ let startBtn = document.getElementById('start'),
 
 let money, time;
 
-function start() {
-    money = +prompt("Ваш бюджет на месяц?", '');
-    time = prompt("Введите дату в формате YYYY-MM-DD", '');
-
-    while (isNaN(money) || money == "" || money == null) {
-        money = prompt("Ваш бюджет на месяц?", '');
-    }
-}
-
-start();
 
 startBtn.addEventListener('click', function () {
     time = prompt("Введите дату в формате YYYY-MM-DD", '');
@@ -42,8 +32,27 @@ startBtn.addEventListener('click', function () {
     appData.budget = money;
     appData.timeData = time;
     budgetValue.textContent = money.toFixed();
-
+    yearValue.Value = new Date(Date.parse(time)).getFullYear();
+    monthValue.Value = new Date(Date.parse(time)).getMonth() + 1;
+    dayValue.Value = new Date(Date.parse(time)).getDate();
 });
+
+expensesBtn.addEventListener('click', function () {
+    let sum = 0;
+
+    for (let i = 0; i < expensesItem.length; i++) {
+        let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
+            b = prompt("Во сколько обойдется?", '');
+        if ((typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+            appData.expenses[a] = b;
+        } else {
+            i = i + 1;
+        } 
+    }
+
+
+
+})
 
 let appData = {
     budget: money,

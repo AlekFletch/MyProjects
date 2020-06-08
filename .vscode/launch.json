@@ -1,6 +1,13 @@
 {
     "version": "0.1.0",
     "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch task 8",
+            "url": "C:\\Prog\\JavaScript\\budget-app\\src\\index.html",
+            "webRoot": "${workspaceFolder}"
+        },
 
         {
             "name": "Launch localhost",
