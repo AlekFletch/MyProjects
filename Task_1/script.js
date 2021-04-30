@@ -74,14 +74,29 @@ while (i < 2) {
 }*/
 
 do {
-    let a;
+    let a; 
+    let b;
+    
     do {
         a = prompt('Один из последних просмотренных фильмов?', '');
-    } while ((a == '') || (a == null));
+    } while ((a == '') || (a == null) || (a.length > 50));
+    
+    do {
+        b = prompt('На сколько оцените его?', '');
+    } while ((b == '') || (b == null) || (b.length > 50));
 
-    const b = prompt('На сколько оцените его?', '');
+    
     personalMovieDB.movies[a] = b;
     i++;
 
 } while (i < 2);
 console.log(personalMovieDB);
+
+const countMov = personalMovieDB.count;
+
+if (countMov < 10){
+    alert('Просмотрено довольно мало фильмов');
+}
+
+
+
