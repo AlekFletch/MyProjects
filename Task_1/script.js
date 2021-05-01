@@ -95,7 +95,11 @@ console.log(personalMovieDB);
 const countMov = personalMovieDB.count;
 
 if (countMov < 10){
-    alert('Просмотрено довольно мало фильмов');
+    alert('Просмотрено довольно мало фильмов');    
+} else if ((countMov <= 30) && (countMov >= 10)){
+    alert('Вы классический зритель'); 
+} else {
+    alert('Вы киноман');  
 }
 
 
