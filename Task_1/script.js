@@ -17,7 +17,7 @@
 let numberOfFilms;
 
 const personalMovieDB = {
-    count: numberOfFilms,
+    count: 0,
     movies: {},
     actors: {},
     genres: [],
@@ -61,14 +61,18 @@ const personalMovieDB = {
     },
     writeYourGenres: function () {
         for (let i = 1; i <= 3; i++) {
-            personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
-            while ( personalMovieDB.genres[i - 1] == '' ||  personalMovieDB.genres[i - 1] == null) {
-                personalMovieDB.genres[i - 1] = +prompt(`Ваш любимый жанр под номером ${i}`);
+            let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+            if (genre === '' || genre == null){
+                console.log('Введены некорректные данные');
+                i--;
             }
+               else {
+            personalMovieDB.genres[i - 1] = genre;
         }
-        let cnt = 1;
-        this.genres.forEach(element => {
-            console.log(`Любимый жанр #${cnt}  - это (${element})`)
+        }
+        
+        this.genres.forEach((element, cnt) => {
+            console.log(`Любимый жанр #${cnt+1}  - это (${element})`);
             cnt++;
         });
     },
