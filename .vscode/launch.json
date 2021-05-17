@@ -9,7 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open a specific file",
-            "file": "Task_1/index.html"       
+            "file": "les_30/index.html"       
          }
     ]
 }
