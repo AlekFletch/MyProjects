@@ -36,4 +36,4 @@ divPromoGenre[0].innerHTML = "ДРАМА";
 
 /*3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
 Реализовать только при помощи JS*/
-promoBg.style.cssText = "background: url('../img/bg.jpg') 0 0/cover no-repeat; height: 360px";
+promoBg.style.backgroundImage = "url('img/bg.jpg')";
