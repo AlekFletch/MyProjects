@@ -29,9 +29,9 @@ const movieDB = {
 };
 
 const adv = document.querySelectorAll('.promo__adv img'),
-      poster = document.querySelector('.promo__bg'),
-      genre = poster.querySelector('.promo__genre'),
-      movieList = document.querySelector('.promo__interactive-list');
+    poster = document.querySelector('.promo__bg'),
+    genre = poster.querySelector('.promo__genre'),
+    movieList = document.querySelector('.promo__interactive-list');
 
 adv.forEach(item => {
     item.remove();
@@ -41,14 +41,33 @@ genre.textContent = 'драма';
 
 poster.style.backgroundImage = 'url("img/bg.jpg")';
 
-movieList.innerHTML = "";
 
-movieDB.movies.sort();
 
-movieDB.movies.forEach((film, i) => {
-    movieList.innerHTML += `
+function listWriter() {
+    movieList.innerHTML = "";
+
+    movieDB.movies.sort();
+
+    movieDB.movies.forEach((film, i) => {
+        movieList.innerHTML += `
         <li class="promo__interactive-item">${i + 1} ${film}
             <div class="delete"></div>
         </li>
     `;
+    });
+}
+/*1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
+новый фильм добавляется в список. Страница не должна перезагружаться.
+Новый фильм должен добавляться в movieDB.movies.
+Для получения доступа к значению input - обращаемся к нему как input.value;
+P.S. Здесь есть несколько вариантов решения задачи, принимается любой, но рабочий.*/
+let newMovie;
+const newInput = document.querySelector('.adding__input'),
+    sureButton = document.querySelector("button");
+
+sureButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    newMovie = newInput.value;
+    movieDB.movies.push(newMovie);
+    listWriter();
 });
