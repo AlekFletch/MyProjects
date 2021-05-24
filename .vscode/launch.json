@@ -9,7 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open a specific file",
-            "file": "les_30/index.html"       
+            "file": "food/dist/index.html"       
          }
     ]
 }
