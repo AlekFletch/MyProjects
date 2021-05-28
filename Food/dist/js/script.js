@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
-  const tabs = document.querySelectorAll('.tabheader_item'),
+  //tabs
+  const tabs = document.querySelectorAll('.tabheader__item'),
     tabsContent = document.querySelectorAll('.tabcontent'),
     tabsParent = document.querySelector('.tabheader__items');
 
@@ -18,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     tabsContent[i].classList.add('show', 'fade');
     tabsContent[i].classList.remove('hide');
-    tabs[i].classList.add('tabheader_item_active');
+    tabs[i].classList.add('tabheader__item_active');
   }
 
   hideTabContent();
@@ -35,4 +36,15 @@ window.addEventListener('DOMContentLoaded', () => {
             });
 		}
 	});
+
+  //timers
+  const deadline = '2021-06-04';
+
+  //Создаем функцию для определения разницы между дедлайном и текущим временем
+  function getTimeRemaining(endtime) {
+    const t = Date.parse(endtime) - Date.parse(new Date()),
+          days = Math.floor(t/(1000*60*60*24));
+         // hours = Math.floo 
+  }
+
 });
