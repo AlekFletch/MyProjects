@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function getZero(num) {
-    if (num >= 0 && num <10) {
+    if (num >= 0 && num < 10) {
       return `0${num}`;
     } else {
       return num;
@@ -90,4 +90,45 @@ window.addEventListener('DOMContentLoaded', () => {
 
   setClock('.timer', deadline);
 
+  //Modal
+  const modalTriggers = document.querySelectorAll('[data-modal]'),
+    modal = document.querySelector('.modal'),
+    modalCloseBtn = document.querySelector('[data-close]');
+
+
+  /* modalTrigger.addEventListener('click', () => {
+    modal.classList.add('show');
+    modal.classList.remove('hide');
+  });*/
+
+  //Функция для закрывания modal_dialog
+  function closeModal() {
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+    document.body.style.overflow = '';
+  }
+  modalTriggers.forEach(function (item, i, arr) {
+    item.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.classList.remove('hide');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  
+  //Обработка события нажатия на крестик - закрытие modal_dialog
+  modalCloseBtn.addEventListener('click', closeModal);
+
+  //Обработка клика на подложке, если клик снаружи, то modal_dialog закрывается
+  modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeModal();
+  } 
+  });
+
+  //Выход из модального окна при нажатии клавиши "Escape"
+  document.addEventListener('keydown', (e) =>{
+    if (e.code === 'Escape') {
+      closeModal();
+    }
+  });
 });
