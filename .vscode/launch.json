@@ -9,11 +9,15 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open a specific file",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             "file": "les_30/index.html"       
 =======
             "file": "les_30_project/index.html"       
 >>>>>>> Stashed changes
+=======
+            "file": "food/dist/index.html"       
+>>>>>>> main
          }
     ]
 }
