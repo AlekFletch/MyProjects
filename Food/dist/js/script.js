@@ -4,6 +4,13 @@ window.addEventListener('DOMContentLoaded', () => {
     tabsContent = document.querySelectorAll('.tabcontent'),
     tabsParent = document.querySelector('.tabheader__items');
 
+  function openModal() {
+    modal.classList.add('show');
+    modal.classList.remove('hide');
+    document.body.style.overflow = 'hidden';
+    clearInterval(modalTimerId);
+  }
+
   function hideTabContent() {
     tabsContent.forEach(item => {
       item.classList.add('hide');
@@ -38,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   //timers
-  const deadline = '2021-06-04';
+  const deadline = '2022-02-01';
 
   //Создаем функцию для определения разницы между дедлайном и текущим временем
   function getTimeRemaining(endtime) {
@@ -109,26 +116,35 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   modalTriggers.forEach(function (item, i, arr) {
     item.addEventListener('click', () => {
-      modal.classList.add('show');
-      modal.classList.remove('hide');
-      document.body.style.overflow = 'hidden';
+      openModal();
     });
   });
-  
+
   //Обработка события нажатия на крестик - закрытие modal_dialog
   modalCloseBtn.addEventListener('click', closeModal);
 
   //Обработка клика на подложке, если клик снаружи, то modal_dialog закрывается
   modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    closeModal();
-  } 
+    if (e.target === modal) {
+      closeModal();
+    }
   });
 
   //Выход из модального окна при нажатии клавиши "Escape"
-  document.addEventListener('keydown', (e) =>{
+  document.addEventListener('keydown', (e) => {
     if (e.code === 'Escape') {
       closeModal();
     }
   });
+
+  const modalTimerId = setTimeout(openModal, 3000);
+
+  function showModalByScroll() {
+    if ((window.pageYOffset + document.documentElement.clientHeight) > document.documentElement.scrollHeight) {
+      openModal();
+      window.removeEventListener('scroll', showModalByScroll);
+    }
+  }
+
+  window.addEventListener('scroll', showModalByScroll);
 });
