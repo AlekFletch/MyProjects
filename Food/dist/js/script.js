@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
     modal.classList.add('show');
     modal.classList.remove('hide');
     document.body.style.overflow = 'hidden';
-    clearInterval(modalTimerId);
+    //clearInterval(modalTimerId);
   }
 
   function hideTabContent() {
@@ -150,11 +150,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   //Использовать классы для карточек
   class MenuCard {
-    constructor(src, alt, title, descr, price, parentSelector) {
+    constructor(src, alt, title, descr, price, parentSelector, ...classes) {
       this.src = src;
       this.alt = alt;
       this.title = title;
       this.descr = descr;
+      this.classes = classes;
       this.price = price;
       this.parent = document.querySelector(parentSelector);
       this.transfer = 27;
@@ -168,8 +169,14 @@ window.addEventListener('DOMContentLoaded', () => {
     render() {
       const element = document.createElement('div');
 
-      element.innerHTML = `
-      <div class="menu__item">
+      if (this.classes.length === 0) {
+        this.classes = "menu__item";
+        element.classList.add(this.classes);
+      } else {
+        this.classes.forEach(className => element.classList.add(className));
+      }
+
+      element.innerHTML = `      
       <img src= ${this.src} alt=${this.alt}>
       <h3 class="menu__item-subtitle">${this.title}</h3>
       <div class="menu__item-descr">${this.title}</div>
@@ -178,7 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
           <div class="menu__item-cost">Цена:</div>
           <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
       </div>
-  </div>`;
+  </>`;
       this.parent.append(element);
     }
   }
