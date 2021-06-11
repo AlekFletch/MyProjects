@@ -266,4 +266,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
   }
+
+  function showThanksModal() {
+    const prevModalDialog = document.querySelector('.modal_dialog');
+    prevModalDialog.classList.add('hide');
+    openModal();
+  }
+
 });
