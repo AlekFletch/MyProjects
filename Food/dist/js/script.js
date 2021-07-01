@@ -288,7 +288,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   //Работаем со слайдером
-  /*const images = ['<img src="img/slider/pepper.jpg" alt="pepper"></img>', '<img src="img/slider/food-12.jpg" alt="food">', '<img src="img/slider/olive-oil.jpg" alt="oil">', '<img src="img/slider/paprika.jpg" alt="paprika">'];
+  /*const images = ['<img src="img/slider/pepper.jpg" alt="pepper"></img>', 
+  '<img src="img/slider/food-12.jpg" alt="food">', '<img src="img/slider/olive-oil.jpg" alt="oil">',
+   '<img src="img/slider/paprika.jpg" alt="paprika">'];
   const sliderNext = document.querySelector('.offer__slider-next'),
     sliderPrev = document.querySelector('.offer__slider-prev'),
     offerSlide = document.querySelector('.offer__slide');
@@ -309,12 +311,53 @@ window.addEventListener('DOMContentLoaded', function () {
   });*/
   const slides = document.querySelectorAll('.offer__slide'),
     prev = document.querySelector('.offer__slider-prev'),
-    next = document.querySelector('.offer__slider-next')
+    next = document.querySelector('.offer__slider-next'),
+    total = document.querySelector('#total'),
+    current = document.querySelector('#current');
 
-    let slideIndex = 1;
-    function showSlides(n) {
-      if (n > slides.length) {
-        
-      }
+  let slideIndex = 1;
+
+  showSlides(slideIndex);
+
+  if (slides.length < 10) {
+    total.textContent = `0${slides.length}`;
+  } else {
+    total.textContent = slides.length;
+  }
+
+  function showSlides(n) {
+    if (n > slides.length) {
+      slideIndex = 1;
     }
+
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+
+    slides.forEach(item => item.classList.add('hide'));
+    slides[slideIndex - 1].classList.remove('hide');
+
+    slides[slideIndex - 1].classList.add('show');
+
+    // Меняем индикатор "Текущий"
+    if (slideIndex < 10) {
+      current.textContent = `0${slideIndex}`;
+    } else {
+      current.textContent = slideIndex;
+    }
+  }
+
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  prev.addEventListener('click', () => {
+    plusSlides(-1);
+  });
+
+  next.addEventListener('click', () => {
+    plusSlides(1);
+  });
+
 });
