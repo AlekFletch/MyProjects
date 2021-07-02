@@ -334,7 +334,10 @@ window.addEventListener('DOMContentLoaded', function () {
       slideIndex = slides.length;
     }
 
-    slides.forEach(item => item.classList.add('hide'));
+    slides.forEach(item => {
+      item.classList.add('hide', 'fade');
+      item.classList.remove('show');
+    });
     slides[slideIndex - 1].classList.remove('hide');
 
     slides[slideIndex - 1].classList.add('show');
