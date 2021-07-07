@@ -454,5 +454,17 @@ window.addEventListener('DOMContentLoaded', function () {
 
     });
   });
+  //Calc
+  const result = document.querySelector('.calculating__result span');
+  let sex = 'female',
+    height, weight, age,
+    ratio = '1.375';
+     
+function calcTotal(params) {
+  if (!sex || !height || !weight || !age || !ratio) {
+    result.textContent = '_____';
+    return;
+  }
+}
 
 });
