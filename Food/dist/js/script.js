@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // Timer
 
-  const deadline = '2020-05-11';
+  const deadline = '2021-08-29';
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -343,6 +343,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const indicators = document.createElement('ol'),
     dots = [];
+
   indicators.classList.add('carousel-indicators');
   indicators.style.cssText = `
   position: absolute;
@@ -356,6 +357,7 @@ window.addEventListener('DOMContentLoaded', function () {
   margin-left: 15%;
   list-style: none;
   `;
+
   slider.append(indicators);
 
   for (let i = 0; i < slides.length; i++) {
@@ -397,11 +399,15 @@ window.addEventListener('DOMContentLoaded', function () {
     dots[(slideIndex - 1)].style.opacity = '1';
   }
 
+  function getDigital(baseStr) {
+    return +baseStr.replace(/\D/g, '');
+  }
+
   next.addEventListener('click', () => {
-    if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) {
+    if (offset == getDigital(width) * (slides.length - 1)) {
       offset = 0;
     } else {
-      offset += +width.slice(0, width.length - 2);
+      offset += getDigital(width);
     }
 
     slidesField.style.transform = `translateX(-${offset}px)`;
@@ -412,15 +418,15 @@ window.addEventListener('DOMContentLoaded', function () {
       slideIndex++;
     }
     currentInserts();
-  
+
   });
 
 
   prev.addEventListener('click', () => {
     if (offset == 0) {
-      offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+      offset = getDigital(width) * (slides.length - 1);
     } else {
-      offset -= +width.slice(0, width.length - 2);
+      offset -= getDigital(width);
     }
 
     slidesField.style.transform = `translateX(-${offset}px)`;
@@ -441,7 +447,7 @@ window.addEventListener('DOMContentLoaded', function () {
       const slideTo = e.target.getAttribute('data-slide-to');
       slideIndex = slideTo;
 
-      offset = +width.slice(0, width.length - 2) * (slideTo - 1);
+      offset = getDigital(width) * (slideTo - 1);
       slidesField.style.transform = `translateX(-${offset}px)`;
 
       currentInserts();
