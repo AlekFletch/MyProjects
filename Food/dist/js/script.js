@@ -41,7 +41,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // Timer
 
+<<<<<<< Updated upstream
   const deadline = '2021-08-29';
+=======
+  const deadline = '2020-05-11';
+>>>>>>> Stashed changes
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -182,6 +186,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+<<<<<<< Updated upstream
   const getResource = async (url) => {
     const res = await fetch(url);
     if (!res.ok) {
@@ -203,6 +208,34 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+=======
+  new MenuCard(
+    "img/tabs/vegy.jpg",
+    "vegy",
+    'Меню "Фитнес"',
+    'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+    9,
+    ".menu .container"
+  ).render();
+
+  new MenuCard(
+    "img/tabs/post.jpg",
+    "post",
+    'Меню "Постное"',
+    'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
+    14,
+    ".menu .container"
+  ).render();
+
+  new MenuCard(
+    "img/tabs/elite.jpg",
+    "elite",
+    'Меню “Премиум”',
+    'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+    21,
+    ".menu .container"
+  ).render();
+>>>>>>> Stashed changes
 
   // Forms
 
@@ -246,6 +279,7 @@ window.addEventListener('DOMContentLoaded', function () {
       formData.forEach(function (value, key) {
         object[key] = value;
       });
+<<<<<<< Updated upstream
       postData('http://localhost:3000/requests', JSON.stringify(object))
         .then(data => {
           console.log(data);
@@ -256,6 +290,24 @@ window.addEventListener('DOMContentLoaded', function () {
         }).finally(() => {
           form.reset();
         });
+=======
+
+      fetch('server.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(object)
+      }).then(data => {
+        console.log(data);
+        showThanksModal(message.success);
+        statusMessage.remove();
+      }).catch(() => {
+        showThanksModal(message.failure);
+      }).finally(() => {
+        form.reset();
+      });
+>>>>>>> Stashed changes
     });
   }
 
@@ -264,6 +316,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     prevModalDialog.classList.add('hide');
     openModal();
+<<<<<<< Updated upstream
 
     const thanksModal = document.createElement('div');
     thanksModal.classList.add('modal__dialog');
@@ -466,5 +519,23 @@ function calcTotal(params) {
     return;
   }
 }
+=======
+>>>>>>> Stashed changes
 
+    const thanksModal = document.createElement('div');
+    thanksModal.classList.add('modal__dialog');
+    thanksModal.innerHTML = `
+          <div class="modal__content">
+              <div class="modal__close" data-close>×</div>
+              <div class="modal__title">${message}</div>
+          </div>
+      `;
+    document.querySelector('.modal').append(thanksModal);
+    setTimeout(() => {
+      thanksModal.remove();
+      prevModalDialog.classList.add('show');
+      prevModalDialog.classList.remove('hide');
+      closeModal();
+    }, 4000);
+  }
 });

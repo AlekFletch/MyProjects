@@ -23,6 +23,7 @@
     }
   ],
   "requests": [
+<<<<<<< Updated upstream
     {
       "name": "konnov7@gmail.com",
       "phone": "+7(911)298-71-73",
@@ -33,5 +34,8 @@
       "phone": "1234567890",
       "id": 2
     }
+=======
+      
+>>>>>>> Stashed changes
   ]
 }
