@@ -472,6 +472,9 @@ window.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('sex', 'female');
   }
 
+  initLocalSettings('#gender', 'calculating__choose-item_active');
+  initLocalSettings('.calculating__choose_big', 'calculating__choose-item_active');
+
   function calcTotal() {
     if (!sex || !height || !weight || !age || !ratio) {
       result.textContent = '_____';
@@ -486,6 +489,18 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   calcTotal();
+
+  function initLocalSettings(selector, activeClass) {
+    const elements = document.querySelectorAll(`${selector} div`);
+
+    elements.forEach(elem => {
+      elem.classList.remove(activeClass);
+
+      if (elem.id == localStorage.getItem('sex') || elem.dataset.ratio == localStorage.getItem('ratio')) {
+        elem.classList.add(activeClass);
+      }
+    });
+  }
 
   function getStaticInformation(parentSelector, activeClass) {
     const elements = document.querySelectorAll(`${parentSelector} div`);
@@ -519,13 +534,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function getDynamicInformation(selector) {
     const input = document.querySelector(selector);
-    if (input.value.match(/\D/g)) {
-      input.style.border = '1px solid blue';
-    } else {
-      input.style.border = 'none';
-    }
 
     input.addEventListener('input', () => {
+
+      if (input.value.match(/\D/g)) {
+        input.style.border = '1px solid blue';
+      } else {
+        input.style.border = 'none';
+      }
+
       switch (input.getAttribute('id')) {
         case 'height':
           height = +input.value;
