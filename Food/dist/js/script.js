@@ -12,10 +12,10 @@ window.addEventListener('DOMContentLoaded', function () {
    
    calc();
    cards();
-   forms();
+   forms('form', modalTimerId);
    modal('[data-modal]', '.modal', modalTimerId);
    slider();
-   tabs();
+   tabs('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
    timer();
 
 });
